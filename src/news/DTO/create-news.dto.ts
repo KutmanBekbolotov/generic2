@@ -1,16 +1,16 @@
-import { IsString, IsOptional, IsUrl, MaxLength, isNotEmpty, IsNotEmpty } from 'class-validator';
+import { IsString, IsOptional, IsUrl, MaxLength } from 'class-validator';
 
 export class CreateNewsDto {
+  @IsOptional()
   @IsString()
   @MaxLength(100)
-  @IsNotEmpty()
-  title: string;
+  title?: string;  
 
+  @IsOptional()
   @IsString()
-  @IsNotEmpty() 
-  description: string;
+  description?: string;  
 
   @IsOptional()
   @IsUrl()
-  imageUrl?: string;
+  imageUrl?: string;  
 }

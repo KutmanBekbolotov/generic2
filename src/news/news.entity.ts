@@ -1,22 +1,25 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
 export class News {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: true })  
   title: string;
 
-  @Column()
+  @Column({ nullable: true })  
   description: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true })  
+  content: string;
+
+  @Column({ nullable: true })  
   imageUrl: string;
 
-  @Column()
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })  // Делаем поле с дефолтным значением
   createdAt: Date;
 
-  @Column({ nullable: true })
+  @Column({ type: 'timestamp', nullable: true })
   updatedAt: Date;
 }
