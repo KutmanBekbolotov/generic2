@@ -6,18 +6,39 @@ export class News {
   id: number;
 
   @Column({ nullable: true })  
-  title: string;
+  title_ru: string;
 
   @Column({ nullable: true })  
-  description: string;
+  title_ky: string;
 
   @Column({ nullable: true })  
-  content: string;
+  text_ru: string;
+
+  @Column({ nullable: true })  
+  text_ky: string;
+
+  @Column({ nullable: true })  
+  url_youtube_ru: string;
+
+  @Column({ nullable: true })  
+  url_youtube_kg: string;
+
+  @Column({ nullable: true })  
+  published_date: string;
+
+  @Column('simple-array', { nullable: true })  
+  tags: string[];
 
   @Column({ nullable: true })  
   imageUrl: string;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })  // Делаем поле с дефолтным значением
+  @Column('json', { nullable: true })  
+  images: { id: number; image: string }[];
+
+  @Column({ nullable: true })  
+  viewed: number;
+
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
 
   @Column({ type: 'timestamp', nullable: true })

@@ -10,17 +10,13 @@ export class NewsController {
 
   @Post()
   async create(@Body() createNewsDto: CreateNewsDto) {
-    console.log('Received data:', createNewsDto);
     try {
       const createdNews = await this.newsService.create(createNewsDto);
-      console.log('Created news:', createdNews); 
       return createdNews;
     } catch (error) {
-      console.error('Error during news creation:', error);
-      throw error;
+      throw new HttpException('Failed to create news', HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
-  
 
   @Put(':id')
   async update(
